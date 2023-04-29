@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import model.Group
 import model.Profile
-import ui.views.main.molecules.MainColumn
+import ui.views.main.organisms.MainColumn
 
 @Composable
 fun MainScreen(profile: Profile, groups: List<Group>) {

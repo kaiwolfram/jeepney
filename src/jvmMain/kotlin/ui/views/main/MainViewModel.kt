@@ -14,7 +14,7 @@ class MainViewModel {
             name = "Cool group",
             about = "coolio",
             admins = listOf(),
-            picture = "https://github.githubassets.com/images/modules/profile/achievements/starstruck-default--light-medium.png",
+            picture = "https://media.tenor.com/XmdYMlOdJZkAAAAM/dancing-bee-bee.gif",
             channels = listOf()
         ),
         Group(
