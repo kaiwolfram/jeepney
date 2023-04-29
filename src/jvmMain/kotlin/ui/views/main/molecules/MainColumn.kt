@@ -3,7 +3,9 @@ package ui.views.main.molecules
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -32,25 +34,71 @@ fun MainColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Spacer(Modifier.height(6.dp))
-            MainIcon(picture = profilePicture, onClick = onDirectMessagesClick)
-            SectionDivider()
-            groupPictures.forEachIndexed { i, groupPicture ->
-                run {
-                    MainIcon(picture = groupPicture, onClick = { onGroupClick(i) })
-                }
+        DirectMessagesSection(onDirectMessagesClick = onDirectMessagesClick)
+        GroupSection(
+            modifier = Modifier.weight(1f).verticalScroll(state = rememberScrollState()),
+            groupPictures = groupPictures,
+            onGroupClick = onGroupClick,
+            onAddGroupClick = onAddGroupClick
+        )
+        ProfileSection(
+            profilePicture = profilePicture,
+            onProfileClick = onProfileClick
+        )
+    }
+}
+
+@Composable
+private fun DirectMessagesSection(
+    onDirectMessagesClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Spacer(Modifier.height(6.dp))
+        MainIcon(
+            picture = "https://em-content.zobj.net/thumbs/120/apple/354/love-letter_1f48c.png",
+            onClick = onDirectMessagesClick
+        )
+        SectionDivider()
+    }
+}
+
+@Composable
+private fun GroupSection(
+    groupPictures: List<String>,
+    onGroupClick: (Int) -> Unit,
+    onAddGroupClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        groupPictures.forEachIndexed { i, groupPicture ->
+            run {
+                MainIcon(picture = groupPicture, onClick = { onGroupClick(i) })
             }
-            MainIcon(picture = profilePicture, onClick = onAddGroupClick)
         }
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            SectionDivider()
-            MainIcon(picture = profilePicture, onClick = onProfileClick, shape = CircleShape)
-        }
+        MainIcon(picture = "https://em-content.zobj.net/thumbs/120/apple/354/plus_2795.png", onClick = onAddGroupClick)
+    }
+}
+
+@Composable
+private fun ProfileSection(
+    profilePicture: String,
+    onProfileClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Bottom,
+    ) {
+        SectionDivider()
+        MainIcon(picture = profilePicture, onClick = onProfileClick, shape = CircleShape)
     }
 }
 

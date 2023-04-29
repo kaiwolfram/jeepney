@@ -24,5 +24,19 @@ class MainViewModel {
             picture = "https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default--light-medium.png",
             channels = listOf()
         ),
+        Group(
+            name = "Cool group",
+            about = "coolio",
+            admins = listOf(),
+            picture = "https://github.githubassets.com/images/modules/profile/achievements/starstruck-default--light-medium.png",
+            channels = listOf()
+        ),
+        Group(
+            name = "Friendly group",
+            about = "friendly",
+            admins = listOf(),
+            picture = "https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default--light-medium.png",
+            channels = listOf()
+        ),
     )
 }
