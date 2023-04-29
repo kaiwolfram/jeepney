@@ -16,7 +16,7 @@ import ui.components.AsyncImage
 import ui.roundedCorner
 
 @Composable
-internal fun MainIcon(
+fun MainIcon(
     picture: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,

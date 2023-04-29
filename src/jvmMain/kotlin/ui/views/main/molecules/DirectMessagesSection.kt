@@ -11,7 +11,7 @@ import ui.views.main.atoms.MainIcon
 import ui.views.main.atoms.SectionDivider
 
 @Composable
-internal fun DirectMessagesSection(
+fun DirectMessagesSection(
     onDirectMessagesClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {

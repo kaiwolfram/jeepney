@@ -17,7 +17,7 @@ import ui.views.main.molecules.GroupSection
 import ui.views.main.molecules.ProfileSection
 
 @Composable
-internal fun MainColumn(
+fun MainColumn(
     profilePicture: String,
     onProfileClick: () -> Unit,
     onDirectMessagesClick: () -> Unit,

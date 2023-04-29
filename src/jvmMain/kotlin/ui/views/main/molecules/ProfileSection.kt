@@ -11,7 +11,7 @@ import ui.views.main.atoms.SectionDivider
 
 
 @Composable
-internal fun ProfileSection(
+fun ProfileSection(
     profilePicture: String,
     onProfileClick: () -> Unit,
     modifier: Modifier = Modifier,

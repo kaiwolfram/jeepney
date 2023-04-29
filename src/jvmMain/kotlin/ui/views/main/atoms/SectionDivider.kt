@@ -9,6 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-internal fun SectionDivider() {
+fun SectionDivider() {
     Divider(Modifier.padding(vertical = 2.dp).height(2.dp).fillMaxWidth(0.5f))
 }

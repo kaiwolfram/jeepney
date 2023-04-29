@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import ui.views.main.atoms.MainIcon
 
 @Composable
-internal fun GroupSection(
+fun GroupSection(
     groupPictures: List<String>,
     onGroupClick: (Int) -> Unit,
     onAddGroupClick: () -> Unit,
