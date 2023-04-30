@@ -40,10 +40,12 @@ fun MainIcon(
             painterFor = { remember { BitmapPainter(it) } },
             modifier = modifier
                 .padding(
-                    horizontal = mainIconHorizontalPadding.minus(
+                    start = mainIconHorizontalPadding.minus(
                         if (isSelected) mainColumnSelectionIndicatorWidth else 0.dp
                     ),
-                    vertical = mainIconVerticalPadding
+                    end = mainIconHorizontalPadding,
+                    top = mainIconVerticalPadding,
+                    bottom = mainIconVerticalPadding
                 )
                 .background(color = MaterialTheme.colors.background, shape = shape)
                 .clip(shape = shape)
