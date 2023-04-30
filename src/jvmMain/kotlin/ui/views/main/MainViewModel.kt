@@ -1,9 +1,12 @@
 package ui.views.main
 
+import model.DirectMessagesSection
 import model.Group
+import model.MainColumnSelection
 import model.Profile
 
 class MainViewModel {
+    val currentSelection: MainColumnSelection = DirectMessagesSection
     val profile: Profile = Profile(
         name = "Kai",
         about = "I am Kai",

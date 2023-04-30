@@ -5,13 +5,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import model.Group
+import model.MainColumnSelection
 import model.Profile
 import ui.views.main.organisms.MainColumn
 
 @Composable
-fun MainScreen(profile: Profile, groups: List<Group>) {
+fun MainScreen(currentSelection: MainColumnSelection, profile: Profile, groups: List<Group>) {
     Row(modifier = Modifier.fillMaxSize()) {
         MainColumn(
+            currentSelection = currentSelection,
             profilePicture = profile.picture,
             onProfileClick = {},
             onDirectMessagesClick = {},

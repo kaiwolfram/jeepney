@@ -8,6 +8,7 @@ import ui.views.main.atoms.MainIcon
 
 @Composable
 fun GroupSection(
+    selectedIndex: Int?,
     groupPictures: List<String>,
     onGroupClick: (Int) -> Unit,
     onAddGroupClick: () -> Unit,
@@ -19,7 +20,7 @@ fun GroupSection(
     ) {
         groupPictures.forEachIndexed { i, groupPicture ->
             run {
-                MainIcon(picture = groupPicture, onClick = { onGroupClick(i) })
+                MainIcon(isSelected = i == selectedIndex, picture = groupPicture, onClick = { onGroupClick(i) })
             }
         }
         MainIcon(picture = "https://em-content.zobj.net/thumbs/120/apple/354/plus_2795.png", onClick = onAddGroupClick)

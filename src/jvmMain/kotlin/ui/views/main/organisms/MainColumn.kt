@@ -11,13 +11,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import model.DirectMessagesSection
+import model.GroupSection
+import model.MainColumnSelection
+import ui.theme.mainColumnWidth
 import ui.views.main.molecules.DirectMessagesSection
 import ui.views.main.molecules.GroupSection
 import ui.views.main.molecules.ProfileSection
 
 @Composable
 fun MainColumn(
+    currentSelection: MainColumnSelection,
     profilePicture: String,
     onProfileClick: () -> Unit,
     onDirectMessagesClick: () -> Unit,
@@ -26,13 +30,17 @@ fun MainColumn(
     onAddGroupClick: () -> Unit,
 ) {
     Column(
-        modifier = Modifier.fillMaxHeight().width(70.dp).background(color = Color.LightGray),
+        modifier = Modifier.fillMaxHeight().width(mainColumnWidth).background(color = Color.LightGray),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        DirectMessagesSection(onDirectMessagesClick = onDirectMessagesClick)
+        DirectMessagesSection(
+            isSelected = currentSelection is DirectMessagesSection,
+            onDirectMessagesClick = onDirectMessagesClick
+        )
         GroupSection(
             modifier = Modifier.weight(1f).verticalScroll(state = rememberScrollState()),
+            selectedIndex = if (currentSelection is GroupSection) currentSelection.index else null,
             groupPictures = groupPictures,
             onGroupClick = onGroupClick,
             onAddGroupClick = onAddGroupClick

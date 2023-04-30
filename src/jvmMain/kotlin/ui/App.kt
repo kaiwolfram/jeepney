@@ -1,13 +1,13 @@
 package ui
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import ui.theme.JeepneyTheme
 import ui.views.main.MainRoute
 import ui.views.main.MainViewModel
 
 @Composable
 fun App() {
-    MaterialTheme {
+    JeepneyTheme {
         val mainViewModel = MainViewModel()
         MainRoute(mainViewModel = mainViewModel)
     }
