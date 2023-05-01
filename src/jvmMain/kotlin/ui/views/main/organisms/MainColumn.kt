@@ -1,6 +1,9 @@
 package ui.views.main.organisms
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.DraggableState
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -38,8 +41,14 @@ fun MainColumn(
             isSelected = currentSelection is DirectMessagesSection,
             onDirectMessagesClick = onDirectMessagesClick
         )
+        val scrollState = rememberScrollState(0)
         GroupSection(
-            modifier = Modifier.weight(1f).verticalScroll(state = rememberScrollState()),
+            modifier = Modifier.weight(1f)
+                .verticalScroll(state = scrollState)
+                .draggable(
+                    state = DraggableState { scrollState.dispatchRawDelta(it.unaryMinus()) },
+                    orientation = Orientation.Vertical
+                ),
             selectedIndex = if (currentSelection is GroupSection) currentSelection.index else null,
             groupPictures = groupPictures,
             onGroupClick = onGroupClick,
