@@ -22,12 +22,12 @@ import ui.views.main.molecules.ProfileSection
 @Composable
 fun MainColumn(
     currentSelection: MainColumnSelection,
-    profilePicture: String,
-    onProfileClick: () -> Unit,
     onDirectMessagesClick: () -> Unit,
     groupPictures: List<String>,
     onGroupClick: (Int) -> Unit,
     onAddGroupClick: () -> Unit,
+    profilePicture: String,
+    onProfileClick: () -> Unit,
 ) {
     Column(
         modifier = Modifier.fillMaxHeight().width(mainColumnWidth).background(color = Color.LightGray),

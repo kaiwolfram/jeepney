@@ -1,45 +1,51 @@
 package ui.views.main
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
+import model.DirectMessagesSection
 import model.Group
 import model.GroupSection
-import model.MainColumnSelection
-import model.Profile
 
 class MainViewModel {
-    val currentSelection: MainColumnSelection = GroupSection(1)
-    val profile: Profile = Profile(
-        name = "Kai",
-        about = "I am Kai",
-        picture = "https://avatars.githubusercontent.com/u/48265657?v=4"
+    private val viewModelScope = CoroutineScope(Dispatchers.IO)
+    private val viewModelState = MutableStateFlow(MainViewModelState())
+    val uiState = viewModelState.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.Eagerly,
+        initialValue = viewModelState.value
     )
-    val groups: List<Group> = listOf(
-        Group(
-            name = "Cool group",
-            about = "coolio",
-            admins = listOf(),
-            picture = "https://media.tenor.com/XmdYMlOdJZkAAAAM/dancing-bee-bee.gif",
-            channels = listOf()
-        ),
-        Group(
-            name = "Friendly group",
-            about = "friendly",
-            admins = listOf(),
-            picture = "https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default--light-medium.png",
-            channels = listOf()
-        ),
-        Group(
-            name = "Cool group",
-            about = "coolio",
-            admins = listOf(),
-            picture = "https://github.githubassets.com/images/modules/profile/achievements/starstruck-default--light-medium.png",
-            channels = listOf()
-        ),
-        Group(
-            name = "Friendly group",
-            about = "friendly",
-            admins = listOf(),
-            picture = "https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default--light-medium.png",
-            channels = listOf()
-        ),
-    )
+
+    val onDirectMessagesClick: () -> Unit = {
+        viewModelState.update {
+            it.copy(currentSelection = DirectMessagesSection)
+        }
+    }
+
+    val onAddGroupClick: () -> Unit = {
+        viewModelState.update {
+            it.copy(
+                groups = it.groups + Group(
+                    name = "Friendly group",
+                    about = "friendly",
+                    admins = listOf(),
+                    picture = "https://robohash.org/${it.groups.size}",
+                    channels = listOf()
+                )
+            )
+        }
+    }
+
+    val onProfileClick: () -> Unit = {
+        // Open modal dialog
+    }
+
+    val onGroupClick: (Int) -> Unit = { clickedIndex ->
+        viewModelState.update {
+            it.copy(currentSelection = GroupSection(index = clickedIndex))
+        }
+    }
 }
