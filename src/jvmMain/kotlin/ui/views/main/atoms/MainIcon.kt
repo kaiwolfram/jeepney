@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.BitmapPainter
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import data.loadNetworkImageBitmap
 import ui.components.AsyncImage
@@ -21,9 +22,10 @@ import ui.theme.*
 fun MainIcon(
     picture: String,
     onClick: () -> Unit,
+    defaultImg: ImageVector,
     modifier: Modifier = Modifier,
     isSelected: Boolean = false,
-    shape: Shape = roundedCorner
+    shape: Shape = roundedCorner,
 ) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         if (isSelected) {
@@ -38,6 +40,7 @@ fun MainIcon(
         AsyncImage(
             load = { loadNetworkImageBitmap(url = picture) },
             painterFor = { remember { BitmapPainter(it) } },
+            defaultImg = defaultImg,
             modifier = modifier
                 .padding(
                     start = mainIconHorizontalPadding.minus(

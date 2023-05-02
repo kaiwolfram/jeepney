@@ -1,15 +1,21 @@
 package ui.views.main.molecules
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.onClick
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import ui.theme.mainColumnTopPadding
-import ui.views.main.atoms.MainIcon
 import ui.views.main.atoms.SectionDivider
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun DirectMessagesSection(
     isSelected: Boolean,
@@ -21,10 +27,11 @@ fun DirectMessagesSection(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Spacer(Modifier.height(mainColumnTopPadding))
-        MainIcon(
-            isSelected = isSelected,
-            picture = "https://em-content.zobj.net/source/microsoft-teams/337/love-letter_1f48c.png",
-            onClick = onDirectMessagesClick
+        Image(
+            imageVector = Icons.Default.MailOutline,
+            contentDescription = null,
+            contentScale = ContentScale.Fit,
+            modifier = Modifier.onClick { onDirectMessagesClick() }
         )
         SectionDivider()
     }
