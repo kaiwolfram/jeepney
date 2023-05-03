@@ -11,13 +11,14 @@ import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.toAwtImage
+import androidx.compose.ui.graphics.toPainter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
@@ -62,7 +63,6 @@ fun MainIcon(
         if (picture != null) {
             AsyncImage(
                 load = { loadNetworkImageBitmap(url = picture) },
-                painterFor = { remember { BitmapPainter(it) } },
                 defaultImg = defaultImg,
                 modifier = imgModifier
             )
@@ -77,13 +77,12 @@ fun MainIcon(
 }
 
 @Composable
-private fun <T> AsyncImage(
-    load: suspend () -> T,
-    painterFor: @Composable (T) -> Painter,
+private fun AsyncImage(
+    load: suspend () -> ImageBitmap?,
     modifier: Modifier = Modifier,
     defaultImg: ImageVector = Icons.Default.AccountBox
 ) {
-    val image: T? by produceState<T?>(null) {
+    val bitmap: ImageBitmap? by produceState<ImageBitmap?>(null) {
         value = withContext(Dispatchers.IO) {
             try {
                 load()
@@ -93,11 +92,12 @@ private fun <T> AsyncImage(
             }
         }
     }
-    if (image != null) {
-        FittedImage(painter = painterFor(image!!), modifier = modifier)
-    } else {
-        FittedImage(painter = rememberVectorPainter(defaultImg), modifier = modifier)
-    }
+    FittedImage(
+        painter = if (bitmap != null) bitmap!!.toAwtImage().toPainter()
+        else rememberVectorPainter(defaultImg),
+        modifier = modifier
+    )
+
 }
 
 @Composable
