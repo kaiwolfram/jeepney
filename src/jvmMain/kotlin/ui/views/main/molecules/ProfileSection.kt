@@ -28,7 +28,8 @@ fun ProfileSection(
             picture = profilePicture,
             onClick = onProfileClick,
             defaultImg = Icons.Default.AccountCircle,
-            shape = CircleShape
+            shape = CircleShape,
+            isSelected = false
         )
     }
 }
