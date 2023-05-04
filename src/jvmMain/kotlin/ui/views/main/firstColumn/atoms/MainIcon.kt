@@ -1,4 +1,4 @@
-package ui.views.main.atoms
+package ui.views.main.firstColumn.atoms
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

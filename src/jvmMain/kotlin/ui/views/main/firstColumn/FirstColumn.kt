@@ -1,4 +1,4 @@
-package ui.views.main.organisms
+package ui.views.main.firstColumn
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -10,15 +10,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import ui.theme.mainColumnWidth
-import ui.views.main.atoms.GroupSection
-import ui.views.main.atoms.MainColumnSelection
-import ui.views.main.molecules.GroupSection
-import ui.views.main.molecules.ProfileSection
-import ui.views.main.molecules.StandardSection
+import ui.views.main.firstColumn.atoms.FirstColumnSelection
+import ui.views.main.firstColumn.atoms.Groups
+import ui.views.main.firstColumn.molecules.GroupSection
+import ui.views.main.firstColumn.molecules.ProfileSection
+import ui.views.main.firstColumn.molecules.StandardSection
 
 @Composable
-fun MainColumn(
-    currentSelection: MainColumnSelection,
+fun FirstColumn(
+    firstColumnSelection: FirstColumnSelection,
     onFeedClick: () -> Unit,
     onDirectMessagesClick: () -> Unit,
     groupPictures: List<String>,
@@ -33,13 +33,13 @@ fun MainColumn(
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         StandardSection(
-            selection = currentSelection,
+            selection = firstColumnSelection,
             onFeedClick = onFeedClick,
             onDirectMessagesClick = onDirectMessagesClick
         )
         GroupSection(
             modifier = Modifier.weight(1f),
-            selectedIndex = if (currentSelection is GroupSection) currentSelection.index else null,
+            selectedIndex = if (firstColumnSelection is Groups) firstColumnSelection.index else null,
             groupPictures = groupPictures,
             onGroupClick = onGroupClick,
             onAddGroupClick = onAddGroupClick

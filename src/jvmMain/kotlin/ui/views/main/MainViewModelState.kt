@@ -2,11 +2,11 @@ package ui.views.main
 
 import model.Group
 import model.Profile
-import ui.views.main.atoms.DirectMessages
-import ui.views.main.atoms.MainColumnSelection
+import ui.views.main.firstColumn.atoms.DirectMessages
+import ui.views.main.firstColumn.atoms.FirstColumnSelection
 
 data class MainViewModelState(
-    val currentSelection: MainColumnSelection = DirectMessages,
+    val firstColumnSelection: FirstColumnSelection = DirectMessages,
     val groups: List<Group> = listOf(
         Group(
             name = "Cool group",

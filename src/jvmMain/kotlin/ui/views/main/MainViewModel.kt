@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import model.Group
-import ui.views.main.atoms.DirectMessages
-import ui.views.main.atoms.Feed
-import ui.views.main.atoms.GroupSection
+import ui.views.main.firstColumn.atoms.DirectMessages
+import ui.views.main.firstColumn.atoms.Feed
+import ui.views.main.firstColumn.atoms.Groups
 
 class MainViewModel {
     private val viewModelScope = CoroutineScope(Dispatchers.IO)
@@ -22,13 +22,13 @@ class MainViewModel {
 
     val onFeedClick: () -> Unit = {
         viewModelState.update {
-            it.copy(currentSelection = Feed)
+            it.copy(firstColumnSelection = Feed)
         }
     }
 
     val onDirectMessagesClick: () -> Unit = {
         viewModelState.update {
-            it.copy(currentSelection = DirectMessages)
+            it.copy(firstColumnSelection = DirectMessages)
         }
     }
 
@@ -52,7 +52,7 @@ class MainViewModel {
 
     val onGroupClick: (Int) -> Unit = { clickedIndex ->
         viewModelState.update {
-            it.copy(currentSelection = GroupSection(index = clickedIndex))
+            it.copy(firstColumnSelection = Groups(index = clickedIndex))
         }
     }
 }

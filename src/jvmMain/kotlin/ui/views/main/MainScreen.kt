@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import ui.views.main.organisms.MainColumn
+import ui.views.main.firstColumn.FirstColumn
 
 @Composable
 fun MainScreen(
@@ -16,8 +16,8 @@ fun MainScreen(
     onProfileClick: () -> Unit,
 ) {
     Row(modifier = Modifier.fillMaxSize()) {
-        MainColumn(
-            currentSelection = uiState.currentSelection,
+        FirstColumn(
+            firstColumnSelection = uiState.firstColumnSelection,
             onFeedClick = onFeedClick,
             onDirectMessagesClick = onDirectMessagesClick,
             groupPictures = uiState.groups.map { it.picture },
