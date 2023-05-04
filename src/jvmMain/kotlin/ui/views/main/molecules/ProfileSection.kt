@@ -2,7 +2,6 @@ package ui.views.main.molecules
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.runtime.Composable
@@ -28,7 +27,6 @@ fun ProfileSection(
             picture = profilePicture,
             onClick = onProfileClick,
             defaultImg = Icons.Default.AccountCircle,
-            shape = CircleShape,
             isSelected = false
         )
     }

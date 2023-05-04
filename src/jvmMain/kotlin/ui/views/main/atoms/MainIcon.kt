@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.toAwtImage
 import androidx.compose.ui.graphics.toPainter
@@ -37,9 +36,8 @@ fun MainIcon(
     isSelected: Boolean,
     modifier: Modifier = Modifier,
     picture: String? = null,
-    shape: Shape = roundedCorner,
 ) {
-    val realShape = if (isSelected) CircleShape else shape
+    val realShape = if (isSelected) roundedCorner else CircleShape
     Row(verticalAlignment = Alignment.CenterVertically) {
         if (isSelected) {
             Box(
