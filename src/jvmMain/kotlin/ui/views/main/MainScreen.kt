@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import ui.views.main.firstColumn.FirstColumn
+import ui.views.main.secondColumn.SecondColumn
 
 @Composable
 fun MainScreen(
@@ -26,5 +27,6 @@ fun MainScreen(
             profilePicture = uiState.profile.picture,
             onProfileClick = onProfileClick,
         )
+        SecondColumn(firstColumnSelection = uiState.firstColumnSelection)
     }
 }

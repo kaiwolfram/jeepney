@@ -38,8 +38,8 @@ fun MainIcon(
     Row(verticalAlignment = Alignment.CenterVertically) {
         if (isSelected) {
             Box(
-                modifier = Modifier.height(mainColumnSelectionIndicatorHeight)
-                    .width(mainColumnSelectionIndicatorWidth)
+                modifier = Modifier.height(firstColumnSelectionIndicatorHeight)
+                    .width(firstColumnSelectionIndicatorWidth)
                     .padding(vertical = small)
                     .clip(RoundedCornerShape(topEndPercent = 100, bottomEndPercent = 100))
                     .background(MaterialTheme.colors.background)
@@ -48,7 +48,7 @@ fun MainIcon(
         val imgModifier = modifier
             .padding(
                 start = mainIconHorizontalPadding.minus(
-                    if (isSelected) mainColumnSelectionIndicatorWidth else 0.dp
+                    if (isSelected) firstColumnSelectionIndicatorWidth else 0.dp
                 ),
                 end = mainIconHorizontalPadding,
                 top = mainIconVerticalPadding,

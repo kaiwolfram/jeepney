@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import ui.theme.mainColumnTopPadding
+import ui.theme.firstColumnTopPadding
 import ui.views.main.firstColumn.atoms.*
 
 @Composable
@@ -20,7 +20,7 @@ fun StandardSection(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(Modifier.height(mainColumnTopPadding))
+        Spacer(Modifier.height(firstColumnTopPadding))
         MainIcon(
             onClick = onDirectMessagesClick,
             defaultImagePath = "icon_chat.svg",

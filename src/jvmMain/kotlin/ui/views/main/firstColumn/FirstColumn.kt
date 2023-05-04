@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import ui.theme.mainColumnWidth
+import ui.theme.firstColumnWidth
 import ui.views.main.firstColumn.atoms.FirstColumnSelection
 import ui.views.main.firstColumn.atoms.Groups
 import ui.views.main.firstColumn.molecules.GroupSection
@@ -28,7 +28,7 @@ fun FirstColumn(
     onProfileClick: () -> Unit,
 ) {
     Column(
-        modifier = Modifier.fillMaxHeight().width(mainColumnWidth).background(color = Color.LightGray),
+        modifier = Modifier.fillMaxHeight().width(firstColumnWidth).background(color = Color.LightGray),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
