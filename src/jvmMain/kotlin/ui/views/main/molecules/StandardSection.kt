@@ -3,9 +3,6 @@ package ui.views.main.molecules
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,12 +23,12 @@ fun StandardSection(
         Spacer(Modifier.height(mainColumnTopPadding))
         MainIcon(
             onClick = onDirectMessagesClick,
-            defaultImg = Icons.Default.MailOutline,
+            defaultImagePath = "icon_chat.svg",
             isSelected = selection == DirectMessages
         )
         MainIcon(
             onClick = onFeedClick,
-            defaultImg = Icons.Default.Favorite,
+            defaultImagePath = "icon_feed.svg",
             isSelected = selection == Feed
         )
         SectionDivider()

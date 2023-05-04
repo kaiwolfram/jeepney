@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
@@ -19,9 +17,8 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.toAwtImage
 import androidx.compose.ui.graphics.toPainter
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import data.loadNetworkImageBitmap
 import kotlinx.coroutines.Dispatchers
@@ -32,10 +29,10 @@ import java.io.IOException
 @Composable
 fun MainIcon(
     onClick: () -> Unit,
-    defaultImg: ImageVector,
     isSelected: Boolean,
+    defaultImagePath: String,
     modifier: Modifier = Modifier,
-    picture: String? = null,
+    pictureUrl: String? = null,
 ) {
     val realShape = if (isSelected) roundedCorner else CircleShape
     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -57,18 +54,20 @@ fun MainIcon(
                 top = mainIconVerticalPadding,
                 bottom = mainIconVerticalPadding
             )
+            .fillMaxWidth()
+            .aspectRatio(1f)
             .background(color = MaterialTheme.colors.background, shape = realShape)
             .clip(shape = realShape)
             .clickable(onClick = onClick)
-        if (picture != null) {
+        if (pictureUrl != null) {
             AsyncImage(
-                load = { loadNetworkImageBitmap(url = picture) },
-                defaultImg = defaultImg,
+                load = { loadNetworkImageBitmap(url = pictureUrl) },
+                defaultImagePath = defaultImagePath,
                 modifier = imgModifier
             )
         } else {
             FittedImage(
-                painter = rememberVectorPainter(defaultImg),
+                painter = painterResource(defaultImagePath),
                 modifier = imgModifier
             )
         }
@@ -80,7 +79,7 @@ fun MainIcon(
 private fun AsyncImage(
     load: suspend () -> ImageBitmap?,
     modifier: Modifier = Modifier,
-    defaultImg: ImageVector = Icons.Default.AccountBox
+    defaultImagePath: String,
 ) {
     val bitmap: ImageBitmap? by produceState<ImageBitmap?>(null) {
         value = withContext(Dispatchers.IO) {
@@ -94,18 +93,18 @@ private fun AsyncImage(
     }
     FittedImage(
         painter = if (bitmap != null) bitmap!!.toAwtImage().toPainter()
-        else rememberVectorPainter(defaultImg),
+        else painterResource(defaultImagePath),
         modifier = modifier
     )
-
 }
+
 
 @Composable
 private fun FittedImage(painter: Painter, modifier: Modifier = Modifier) {
     Image(
         painter = painter,
         contentDescription = null,
-        contentScale = ContentScale.Fit,
+        contentScale = ContentScale.Inside,
         modifier = modifier
     )
 }

@@ -2,8 +2,6 @@ package ui.views.main.molecules
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,9 +22,9 @@ fun ProfileSection(
     ) {
         SectionDivider()
         MainIcon(
-            picture = profilePicture,
+            pictureUrl = profilePicture,
             onClick = onProfileClick,
-            defaultImg = Icons.Default.AccountCircle,
+            defaultImagePath = "icon_person.svg",
             isSelected = false
         )
     }
