@@ -9,6 +9,7 @@ import ui.views.main.organisms.MainColumn
 @Composable
 fun MainScreen(
     uiState: MainViewModelState,
+    onFeedClick: () -> Unit,
     onDirectMessagesClick: () -> Unit,
     onGroupClick: (Int) -> Unit,
     onAddGroupClick: () -> Unit,
@@ -17,6 +18,7 @@ fun MainScreen(
     Row(modifier = Modifier.fillMaxSize()) {
         MainColumn(
             currentSelection = uiState.currentSelection,
+            onFeedClick = onFeedClick,
             onDirectMessagesClick = onDirectMessagesClick,
             groupPictures = uiState.groups.map { it.picture },
             onGroupClick = onGroupClick,

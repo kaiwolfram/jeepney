@@ -9,17 +9,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import model.DirectMessagesSection
-import model.GroupSection
-import model.MainColumnSelection
 import ui.theme.mainColumnWidth
-import ui.views.main.molecules.DirectMessagesSection
+import ui.views.main.atoms.GroupSection
+import ui.views.main.atoms.MainColumnSelection
 import ui.views.main.molecules.GroupSection
 import ui.views.main.molecules.ProfileSection
+import ui.views.main.molecules.StandardSection
 
 @Composable
 fun MainColumn(
     currentSelection: MainColumnSelection,
+    onFeedClick: () -> Unit,
     onDirectMessagesClick: () -> Unit,
     groupPictures: List<String>,
     onGroupClick: (Int) -> Unit,
@@ -32,8 +32,9 @@ fun MainColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        DirectMessagesSection(
-            isSelected = currentSelection is DirectMessagesSection,
+        StandardSection(
+            selection = currentSelection,
+            onFeedClick = onFeedClick,
             onDirectMessagesClick = onDirectMessagesClick
         )
         GroupSection(

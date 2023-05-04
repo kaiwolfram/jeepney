@@ -6,9 +6,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
-import model.DirectMessagesSection
 import model.Group
-import model.GroupSection
+import ui.views.main.atoms.DirectMessages
+import ui.views.main.atoms.Feed
+import ui.views.main.atoms.GroupSection
 
 class MainViewModel {
     private val viewModelScope = CoroutineScope(Dispatchers.IO)
@@ -19,9 +20,15 @@ class MainViewModel {
         initialValue = viewModelState.value
     )
 
+    val onFeedClick: () -> Unit = {
+        viewModelState.update {
+            it.copy(currentSelection = Feed)
+        }
+    }
+
     val onDirectMessagesClick: () -> Unit = {
         viewModelState.update {
-            it.copy(currentSelection = DirectMessagesSection)
+            it.copy(currentSelection = DirectMessages)
         }
     }
 

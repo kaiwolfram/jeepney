@@ -39,7 +39,7 @@ fun GroupSection(
                     isSelected = i == selectedIndex,
                     picture = groupPicture,
                     onClick = { onGroupClick(i) },
-                    defaultImg = Icons.Default.AccountBox
+                    defaultImg = Icons.Default.AccountBox,
                 )
             }
         }

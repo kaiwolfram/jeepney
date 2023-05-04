@@ -27,11 +27,11 @@ val medium = 8.dp
  */
 val large = 16.dp
 
-val mainIconHorizontalPadding = 12.dp
+val mainIconHorizontalPadding = 8.dp
 val mainIconVerticalPadding = mainIconHorizontalPadding.div(2)
 
-val mainColumnWidth = 70.dp
+val mainColumnWidth = 55.dp
 val mainColumnTopPadding = mainIconVerticalPadding
 
 val mainColumnSelectionIndicatorHeight = mainColumnWidth.times(0.6f)
-val mainColumnSelectionIndicatorWidth = 4.dp
+val mainColumnSelectionIndicatorWidth = 3.dp

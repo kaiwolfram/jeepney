@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
@@ -38,6 +39,7 @@ fun MainIcon(
     picture: String? = null,
     shape: Shape = roundedCorner,
 ) {
+    val realShape = if (isSelected) CircleShape else shape
     Row(verticalAlignment = Alignment.CenterVertically) {
         if (isSelected) {
             Box(
@@ -57,8 +59,8 @@ fun MainIcon(
                 top = mainIconVerticalPadding,
                 bottom = mainIconVerticalPadding
             )
-            .background(color = MaterialTheme.colors.background, shape = shape)
-            .clip(shape = shape)
+            .background(color = MaterialTheme.colors.background, shape = realShape)
+            .clip(shape = realShape)
             .clickable(onClick = onClick)
         if (picture != null) {
             AsyncImage(

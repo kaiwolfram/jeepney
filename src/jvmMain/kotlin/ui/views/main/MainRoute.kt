@@ -10,6 +10,7 @@ fun MainRoute(mainViewModel: MainViewModel) {
 
     MainScreen(
         uiState = uiState,
+        onFeedClick = mainViewModel.onFeedClick,
         onDirectMessagesClick = mainViewModel.onDirectMessagesClick,
         onGroupClick = mainViewModel.onGroupClick,
         onAddGroupClick = mainViewModel.onAddGroupClick,
