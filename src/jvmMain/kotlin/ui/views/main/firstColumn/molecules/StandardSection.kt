@@ -6,8 +6,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import model.DirectMessages
+import model.Feed
+import model.FirstColumnSelection
 import ui.theme.firstColumnTopPadding
-import ui.views.main.firstColumn.atoms.*
+import ui.views.main.firstColumn.atoms.MainIcon
+import ui.views.main.firstColumn.atoms.SectionDivider
 
 @Composable
 fun StandardSection(

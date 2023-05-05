@@ -9,10 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import model.FirstColumnSelection
 import model.Group
+import model.Groups
 import ui.theme.firstColumnWidth
-import ui.views.main.firstColumn.atoms.FirstColumnSelection
-import ui.views.main.firstColumn.atoms.Groups
 import ui.views.main.firstColumn.molecules.GroupSection
 import ui.views.main.firstColumn.molecules.ProfileSection
 import ui.views.main.firstColumn.molecules.StandardSection
@@ -41,7 +41,7 @@ fun FirstColumn(
         GroupSection(
             modifier = Modifier.weight(1f),
             groups = groups,
-            selectedGroupId = if (firstColumnSelection is Groups) firstColumnSelection.group.id else null,
+            selectedIndex = if (firstColumnSelection is Groups) firstColumnSelection.index else null,
             onGroupClick = onGroupClick,
             onAddGroupClick = onAddGroupClick
         )

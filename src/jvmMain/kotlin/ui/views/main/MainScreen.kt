@@ -27,6 +27,10 @@ fun MainScreen(
             profilePicture = uiState.profile.picture,
             onProfileClick = onProfileClick,
         )
-        SecondColumn(firstColumnSelection = uiState.firstColumnSelection)
+        SecondColumn(
+            firstColumnSelection = uiState.firstColumnSelection,
+            selectedGroup = uiState.getSelectedGroupOrNull(),
+            directMessageChats = uiState.directMessageChats,
+        )
     }
 }

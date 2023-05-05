@@ -1,9 +1,7 @@
 package ui.views.main
 
-import model.Group
-import model.Profile
-import ui.views.main.firstColumn.atoms.DirectMessages
-import ui.views.main.firstColumn.atoms.FirstColumnSelection
+import data.createRobohashUrl
+import model.*
 import java.util.*
 
 data class MainViewModelState(
@@ -14,7 +12,7 @@ data class MainViewModelState(
             name = UUID.randomUUID().toString(),
             about = "coolio",
             admins = listOf(),
-            picture = "https://robohash.org/init",
+            picture = createRobohashUrl(UUID.randomUUID().toString()),
             channels = listOf()
         ),
     ),
@@ -22,5 +20,45 @@ data class MainViewModelState(
         name = "Kai",
         about = "I am Kai",
         picture = "https://avatars.githubusercontent.com/u/48265657?v=4"
+    ),
+    val directMessageChats: List<DirectMessageChat> = listOf(
+        DirectMessageChat(
+            partner = Profile(name = "Alice", about = "I am Alice", picture = createRobohashUrl("Alice")),
+            chat = listOf(
+                Message(
+                    author = "Alice",
+                    picture = createRobohashUrl("Alice"),
+                    createdAt = 0L,
+                    content = "I am indeed Alice"
+                )
+            )
+        ),
+        DirectMessageChat(
+            partner = Profile(name = "Alice", about = "I am Alice", picture = createRobohashUrl("Alice")),
+            chat = listOf(
+                Message(
+                    author = "Alice",
+                    picture = createRobohashUrl("Alice"),
+                    createdAt = 0L,
+                    content = "I am indeed Alice"
+                )
+            )
+        ),
+        DirectMessageChat(
+            partner = Profile(name = "Alice", about = "I am Alice", picture = createRobohashUrl("Alice")),
+            chat = listOf(
+                Message(
+                    author = "Alice",
+                    picture = createRobohashUrl("Alice"),
+                    createdAt = 0L,
+                    content = "I am indeed Alice"
+                )
+            )
+        ),
     )
-)
+) {
+    fun getSelectedGroupOrNull(): Group? {
+        return if (firstColumnSelection is Groups) groups.getOrNull(firstColumnSelection.index)
+        else null
+    }
+}

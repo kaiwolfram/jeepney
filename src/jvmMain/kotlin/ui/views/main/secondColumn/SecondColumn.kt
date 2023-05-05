@@ -1,10 +1,7 @@
 package ui.views.main.secondColumn
 
 import androidx.compose.runtime.Composable
-import ui.views.main.firstColumn.atoms.DirectMessages
-import ui.views.main.firstColumn.atoms.Feed
-import ui.views.main.firstColumn.atoms.FirstColumnSelection
-import ui.views.main.firstColumn.atoms.Groups
+import model.*
 import ui.views.main.secondColumn.organisms.DirectMessagesColumn
 import ui.views.main.secondColumn.organisms.FeedColumn
 import ui.views.main.secondColumn.organisms.GroupColumn
@@ -12,10 +9,12 @@ import ui.views.main.secondColumn.organisms.GroupColumn
 @Composable
 fun SecondColumn(
     firstColumnSelection: FirstColumnSelection,
+    selectedGroup: Group?,
+    directMessageChats: List<DirectMessageChat>
 ) {
     when (firstColumnSelection) {
-        is DirectMessages -> DirectMessagesColumn()
+        is DirectMessages -> DirectMessagesColumn(directMessageChats = directMessageChats)
         is Feed -> FeedColumn()
-        is Groups -> GroupColumn(firstColumnSelection.group)
+        is Groups -> selectedGroup?.let { GroupColumn(group = it) }
     }
 }

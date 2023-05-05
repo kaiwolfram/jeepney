@@ -17,7 +17,7 @@ import ui.views.main.firstColumn.atoms.MainIcon
 @Composable
 fun GroupSection(
     groups: List<Group>,
-    selectedGroupId: String?,
+    selectedIndex: Int?,
     onGroupClick: (Int) -> Unit,
     onAddGroupClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -35,7 +35,7 @@ fun GroupSection(
         groups.forEachIndexed { i, group ->
             run {
                 MainIcon(
-                    isSelected = group.id == selectedGroupId,
+                    isSelected = i == selectedIndex,
                     pictureUrl = group.picture,
                     onClick = { onGroupClick(i) },
                     defaultImagePath = "icon_group.svg",

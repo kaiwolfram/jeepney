@@ -1,6 +1,4 @@
-package ui.views.main.firstColumn.atoms
-
-import model.Group
+package model
 
 sealed class FirstColumnSelection
 
@@ -8,4 +6,4 @@ object DirectMessages : FirstColumnSelection()
 
 object Feed : FirstColumnSelection()
 
-class Groups(val group: Group) : FirstColumnSelection()
+class Groups(val index: Int) : FirstColumnSelection()
