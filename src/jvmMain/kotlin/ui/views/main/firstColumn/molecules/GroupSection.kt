@@ -10,13 +10,14 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import model.Group
 import ui.views.main.firstColumn.atoms.MainIcon
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GroupSection(
-    selectedIndex: Int?,
-    groupPictures: List<String>,
+    groups: List<Group>,
+    selectedGroupId: String?,
     onGroupClick: (Int) -> Unit,
     onAddGroupClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -31,11 +32,11 @@ fun GroupSection(
             ),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        groupPictures.forEachIndexed { i, groupPicture ->
+        groups.forEachIndexed { i, group ->
             run {
                 MainIcon(
-                    isSelected = i == selectedIndex,
-                    pictureUrl = groupPicture,
+                    isSelected = group.id == selectedGroupId,
+                    pictureUrl = group.picture,
                     onClick = { onGroupClick(i) },
                     defaultImagePath = "icon_group.svg",
                 )

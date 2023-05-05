@@ -16,7 +16,7 @@ fun SecondColumnStructure(content: @Composable () -> Unit) {
     Column(
         modifier = Modifier.fillMaxHeight().width(secondColumnWidth).background(color = Color.Gray),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween
+        verticalArrangement = Arrangement.Top
     ) {
         content()
     }

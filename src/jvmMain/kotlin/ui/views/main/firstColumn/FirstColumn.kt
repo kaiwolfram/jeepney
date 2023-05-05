@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import model.Group
 import ui.theme.firstColumnWidth
 import ui.views.main.firstColumn.atoms.FirstColumnSelection
 import ui.views.main.firstColumn.atoms.Groups
@@ -21,7 +22,7 @@ fun FirstColumn(
     firstColumnSelection: FirstColumnSelection,
     onFeedClick: () -> Unit,
     onDirectMessagesClick: () -> Unit,
-    groupPictures: List<String>,
+    groups: List<Group>,
     onGroupClick: (Int) -> Unit,
     onAddGroupClick: () -> Unit,
     profilePicture: String,
@@ -39,8 +40,8 @@ fun FirstColumn(
         )
         GroupSection(
             modifier = Modifier.weight(1f),
-            selectedIndex = if (firstColumnSelection is Groups) firstColumnSelection.index else null,
-            groupPictures = groupPictures,
+            groups = groups,
+            selectedGroupId = if (firstColumnSelection is Groups) firstColumnSelection.group.id else null,
             onGroupClick = onGroupClick,
             onAddGroupClick = onAddGroupClick
         )

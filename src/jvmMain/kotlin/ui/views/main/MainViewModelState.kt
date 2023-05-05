@@ -4,12 +4,14 @@ import model.Group
 import model.Profile
 import ui.views.main.firstColumn.atoms.DirectMessages
 import ui.views.main.firstColumn.atoms.FirstColumnSelection
+import java.util.*
 
 data class MainViewModelState(
     val firstColumnSelection: FirstColumnSelection = DirectMessages,
     val groups: List<Group> = listOf(
         Group(
-            name = "Cool group",
+            id = UUID.randomUUID().toString(),
+            name = UUID.randomUUID().toString(),
             about = "coolio",
             admins = listOf(),
             picture = "https://robohash.org/init",

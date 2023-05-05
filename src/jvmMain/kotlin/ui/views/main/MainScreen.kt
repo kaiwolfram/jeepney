@@ -21,7 +21,7 @@ fun MainScreen(
             firstColumnSelection = uiState.firstColumnSelection,
             onFeedClick = onFeedClick,
             onDirectMessagesClick = onDirectMessagesClick,
-            groupPictures = uiState.groups.map { it.picture },
+            groups = uiState.groups,
             onGroupClick = onGroupClick,
             onAddGroupClick = onAddGroupClick,
             profilePicture = uiState.profile.picture,

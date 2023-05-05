@@ -10,6 +10,7 @@ import model.Group
 import ui.views.main.firstColumn.atoms.DirectMessages
 import ui.views.main.firstColumn.atoms.Feed
 import ui.views.main.firstColumn.atoms.Groups
+import java.util.*
 
 class MainViewModel {
     private val viewModelScope = CoroutineScope(Dispatchers.IO)
@@ -36,10 +37,11 @@ class MainViewModel {
         viewModelState.update {
             it.copy(
                 groups = it.groups + Group(
-                    name = "Friendly group",
-                    about = "friendly",
+                    id = UUID.randomUUID().toString(),
+                    name = UUID.randomUUID().toString(),
+                    about = UUID.randomUUID().toString(),
                     admins = listOf(),
-                    picture = "https://robohash.org/${it.groups.size}",
+                    picture = "https://robohash.org/${UUID.randomUUID()}",
                     channels = listOf()
                 )
             )
@@ -52,7 +54,7 @@ class MainViewModel {
 
     val onGroupClick: (Int) -> Unit = { clickedIndex ->
         viewModelState.update {
-            it.copy(firstColumnSelection = Groups(index = clickedIndex))
+            it.copy(firstColumnSelection = Groups(group = it.groups[clickedIndex]))
         }
     }
 }

@@ -16,6 +16,6 @@ fun SecondColumn(
     when (firstColumnSelection) {
         is DirectMessages -> DirectMessagesColumn()
         is Feed -> FeedColumn()
-        is Groups -> GroupColumn("lol")
+        is Groups -> GroupColumn(firstColumnSelection.group)
     }
 }
