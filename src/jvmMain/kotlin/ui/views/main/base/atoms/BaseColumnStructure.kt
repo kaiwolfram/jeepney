@@ -1,4 +1,4 @@
-package ui.views.main.secondColumn.atoms
+package ui.views.main.base.atoms
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import ui.theme.secondColumnWidth
 
 @Composable
-fun SecondColumnStructure(content: @Composable () -> Unit) {
+fun BaseColumnStructure(content: @Composable () -> Unit) {
     Column(
         modifier = Modifier.fillMaxHeight().width(secondColumnWidth).background(color = Color.LightGray),
         horizontalAlignment = Alignment.CenterHorizontally,

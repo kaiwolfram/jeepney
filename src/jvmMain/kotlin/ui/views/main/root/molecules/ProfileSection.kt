@@ -1,12 +1,12 @@
-package ui.views.main.firstColumn.molecules
+package ui.views.main.root.molecules
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import ui.views.main.firstColumn.atoms.MainIcon
-import ui.views.main.firstColumn.atoms.SectionDivider
+import ui.views.main.root.atoms.MainIcon
+import ui.views.main.root.atoms.SectionDivider
 
 
 @Composable

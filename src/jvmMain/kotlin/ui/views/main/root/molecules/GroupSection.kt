@@ -1,4 +1,4 @@
-package ui.views.main.firstColumn.molecules
+package ui.views.main.root.molecules
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.DraggableState
@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import model.Group
-import ui.views.main.firstColumn.atoms.MainIcon
+import ui.views.main.root.atoms.MainIcon
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

@@ -1,4 +1,4 @@
-package ui.views.main.firstColumn
+package ui.views.main.root
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -13,12 +13,12 @@ import model.FirstColumnSelection
 import model.Group
 import model.GroupSelection
 import ui.theme.firstColumnWidth
-import ui.views.main.firstColumn.molecules.GroupSection
-import ui.views.main.firstColumn.molecules.ProfileSection
-import ui.views.main.firstColumn.molecules.StandardSection
+import ui.views.main.root.molecules.GroupSection
+import ui.views.main.root.molecules.ProfileSection
+import ui.views.main.root.molecules.StandardSection
 
 @Composable
-fun FirstColumn(
+fun RootColumn(
     firstColumnSelection: FirstColumnSelection,
     onFeedClick: () -> Unit,
     onDirectMessagesClick: () -> Unit,

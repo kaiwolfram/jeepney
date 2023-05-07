@@ -1,13 +1,13 @@
-package ui.views.main.secondColumn
+package ui.views.main.base.organisms
 
 import androidx.compose.runtime.Composable
 import model.*
-import ui.views.main.secondColumn.organisms.DirectMessagesColumn
-import ui.views.main.secondColumn.organisms.FeedColumn
-import ui.views.main.secondColumn.organisms.GroupColumn
+import ui.views.main.base.molecules.DirectMessagesColumn
+import ui.views.main.base.molecules.FeedColumn
+import ui.views.main.base.molecules.GroupColumn
 
 @Composable
-fun SecondColumn(
+fun BaseColumn(
     firstColumnSelection: FirstColumnSelection,
     selectedGroup: Group?,
     directMessageChats: List<DirectMessageChat>

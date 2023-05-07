@@ -58,4 +58,14 @@ class MainViewModel {
             it.copy(firstColumnSelection = GroupSelection(index = clickedIndex))
         }
     }
+
+    fun getLambdas(): MainViewModelLambdas {
+        return MainViewModelLambdas(
+            onFeedClick = onFeedClick,
+            onDirectMessagesClick = onDirectMessagesClick,
+            onGroupClick = onGroupClick,
+            onAddGroupClick = onAddGroupClick,
+            onProfileClick = onProfileClick
+        )
+    }
 }

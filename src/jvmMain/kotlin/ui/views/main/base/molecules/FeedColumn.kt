@@ -1,13 +1,13 @@
-package ui.views.main.secondColumn.organisms
+package ui.views.main.base.molecules
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import data.i18n.localizedStrings
-import ui.views.main.secondColumn.atoms.SecondColumnStructure
+import ui.views.main.base.atoms.BaseColumnStructure
 
 @Composable
 fun FeedColumn() {
-    SecondColumnStructure {
+    BaseColumnStructure {
         Text(localizedStrings.feed)
     }
 }

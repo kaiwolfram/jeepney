@@ -1,4 +1,4 @@
-package ui.views.main.firstColumn.molecules
+package ui.views.main.root.molecules
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,8 +10,8 @@ import model.DirectMessagesSelection
 import model.FeedSelection
 import model.FirstColumnSelection
 import ui.theme.firstColumnTopPadding
-import ui.views.main.firstColumn.atoms.MainIcon
-import ui.views.main.firstColumn.atoms.SectionDivider
+import ui.views.main.root.atoms.MainIcon
+import ui.views.main.root.atoms.SectionDivider
 
 @Composable
 fun StandardSection(

@@ -1,4 +1,4 @@
-package ui.views.main.firstColumn.atoms
+package ui.views.main.root.atoms
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height

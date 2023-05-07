@@ -4,34 +4,25 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import ui.views.main.firstColumn.FirstColumn
-import ui.views.main.secondColumn.SecondColumn
+import ui.views.main.base.MainBase
+import ui.views.main.root.RootColumn
 
 @Composable
 fun MainScreen(
     uiState: MainViewModelState,
-    onFeedClick: () -> Unit,
-    onDirectMessagesClick: () -> Unit,
-    onGroupClick: (Int) -> Unit,
-    onAddGroupClick: () -> Unit,
-    onProfileClick: () -> Unit,
+    lambdas: MainViewModelLambdas
 ) {
-    Row(modifier = Modifier.fillMaxSize()) {
-        // TODO: Change to hierarchical structure. Values flow from first to second to content
-        FirstColumn(
+    Row(Modifier.fillMaxSize()) {
+        RootColumn(
             firstColumnSelection = uiState.firstColumnSelection,
-            onFeedClick = onFeedClick,
-            onDirectMessagesClick = onDirectMessagesClick,
+            onFeedClick = lambdas.onFeedClick,
+            onDirectMessagesClick = lambdas.onDirectMessagesClick,
             groups = uiState.groups,
-            onGroupClick = onGroupClick,
-            onAddGroupClick = onAddGroupClick,
+            onGroupClick = lambdas.onGroupClick,
+            onAddGroupClick = lambdas.onAddGroupClick,
             profilePicture = uiState.profile.picture,
-            onProfileClick = onProfileClick,
+            onProfileClick = lambdas.onProfileClick,
         )
-        SecondColumn(
-            firstColumnSelection = uiState.firstColumnSelection,
-            selectedGroup = uiState.getSelectedGroupOrNull(),
-            directMessageChats = uiState.directMessageChats,
-        )
+        MainBase(uiState.firstColumnSelection, null, listOf())
     }
 }
