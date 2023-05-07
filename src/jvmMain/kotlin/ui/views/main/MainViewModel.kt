@@ -7,10 +7,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
-import model.DirectMessages
-import model.Feed
+import model.DirectMessagesSelection
+import model.FeedSelection
 import model.Group
-import model.Groups
+import model.GroupSelection
 import java.util.*
 
 class MainViewModel {
@@ -24,13 +24,13 @@ class MainViewModel {
 
     val onFeedClick: () -> Unit = {
         viewModelState.update {
-            it.copy(firstColumnSelection = Feed)
+            it.copy(firstColumnSelection = FeedSelection)
         }
     }
 
     val onDirectMessagesClick: () -> Unit = {
         viewModelState.update {
-            it.copy(firstColumnSelection = DirectMessages)
+            it.copy(firstColumnSelection = DirectMessagesSelection)
         }
     }
 
@@ -55,7 +55,7 @@ class MainViewModel {
 
     val onGroupClick: (Int) -> Unit = { clickedIndex ->
         viewModelState.update {
-            it.copy(firstColumnSelection = Groups(index = clickedIndex))
+            it.copy(firstColumnSelection = GroupSelection(index = clickedIndex))
         }
     }
 }

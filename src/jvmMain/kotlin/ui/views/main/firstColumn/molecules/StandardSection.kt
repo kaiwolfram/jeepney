@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import model.DirectMessages
-import model.Feed
+import model.DirectMessagesSelection
+import model.FeedSelection
 import model.FirstColumnSelection
 import ui.theme.firstColumnTopPadding
 import ui.views.main.firstColumn.atoms.MainIcon
@@ -28,12 +28,12 @@ fun StandardSection(
         MainIcon(
             onClick = onDirectMessagesClick,
             defaultImagePath = "icon_chat.svg",
-            isSelected = selection == DirectMessages
+            isSelected = selection == DirectMessagesSelection
         )
         MainIcon(
             onClick = onFeedClick,
             defaultImagePath = "icon_feed.svg",
-            isSelected = selection == Feed
+            isSelected = selection == FeedSelection
         )
         SectionDivider()
     }

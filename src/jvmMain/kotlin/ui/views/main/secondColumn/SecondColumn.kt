@@ -13,8 +13,8 @@ fun SecondColumn(
     directMessageChats: List<DirectMessageChat>
 ) {
     when (firstColumnSelection) {
-        is DirectMessages -> DirectMessagesColumn(directMessageChats = directMessageChats)
-        is Feed -> FeedColumn()
-        is Groups -> selectedGroup?.let { GroupColumn(group = it) }
+        is DirectMessagesSelection -> DirectMessagesColumn(directMessageChats = directMessageChats)
+        is FeedSelection -> FeedColumn()
+        is GroupSelection -> selectedGroup?.let { GroupColumn(group = it) }
     }
 }

@@ -14,7 +14,7 @@ import ui.theme.secondColumnWidth
 @Composable
 fun SecondColumnStructure(content: @Composable () -> Unit) {
     Column(
-        modifier = Modifier.fillMaxHeight().width(secondColumnWidth).background(color = Color.Gray),
+        modifier = Modifier.fillMaxHeight().width(secondColumnWidth).background(color = Color.LightGray),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {

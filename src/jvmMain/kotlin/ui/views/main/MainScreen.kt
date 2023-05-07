@@ -17,6 +17,7 @@ fun MainScreen(
     onProfileClick: () -> Unit,
 ) {
     Row(modifier = Modifier.fillMaxSize()) {
+        // TODO: Change to hierarchical structure. Values flow from first to second to content
         FirstColumn(
             firstColumnSelection = uiState.firstColumnSelection,
             onFeedClick = onFeedClick,

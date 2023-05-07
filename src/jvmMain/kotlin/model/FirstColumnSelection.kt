@@ -2,8 +2,8 @@ package model
 
 sealed class FirstColumnSelection
 
-object DirectMessages : FirstColumnSelection()
+object DirectMessagesSelection : FirstColumnSelection()
 
-object Feed : FirstColumnSelection()
+object FeedSelection : FirstColumnSelection()
 
-class Groups(val index: Int) : FirstColumnSelection()
+class GroupSelection(val index: Int) : FirstColumnSelection()
