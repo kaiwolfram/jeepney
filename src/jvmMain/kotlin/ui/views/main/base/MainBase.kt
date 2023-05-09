@@ -10,10 +10,14 @@ import ui.views.main.content.MainContent
 
 @Composable
 fun MainBase(
-    baseColumnSelection: BaseColumnSelection
+    baseColumnSelection: BaseColumnSelection,
+    onAddDirectMessageChat: () -> Unit,
 ) {
     Row(Modifier.fillMaxSize()) {
-        BaseColumn(baseColumnSelection = baseColumnSelection)
+        BaseColumn(
+            baseColumnSelection = baseColumnSelection,
+            onAddDirectMessageChat = onAddDirectMessageChat,
+        )
         MainContent()
     }
 }

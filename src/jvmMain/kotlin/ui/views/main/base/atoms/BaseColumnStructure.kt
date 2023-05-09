@@ -9,12 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import ui.theme.secondColumnWidth
+import ui.theme.baseColumnWidth
 
 @Composable
 fun BaseColumnStructure(content: @Composable () -> Unit) {
     Column(
-        modifier = Modifier.fillMaxHeight().width(secondColumnWidth).background(color = Color.LightGray),
+        modifier = Modifier.fillMaxHeight()
+            .width(baseColumnWidth)
+            .background(color = Color.LightGray),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {

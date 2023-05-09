@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import model.Group
 import model.GroupSelectionIndex
 import model.RootColumnSelection
-import ui.theme.firstColumnWidth
+import ui.theme.rootColumnWidth
 import ui.views.main.root.molecules.GroupSection
 import ui.views.main.root.molecules.ProfileSection
 import ui.views.main.root.molecules.StandardSection
@@ -29,7 +29,7 @@ fun RootColumn(
     onProfileClick: () -> Unit,
 ) {
     Column(
-        modifier = Modifier.fillMaxHeight().width(firstColumnWidth).background(color = Color.Gray),
+        modifier = Modifier.fillMaxHeight().width(rootColumnWidth).background(color = Color.Gray),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {

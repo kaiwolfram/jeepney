@@ -24,7 +24,8 @@ fun MainScreen(
             onProfileClick = lambdas.onProfileClick,
         )
         MainBase(
-            baseColumnSelection = uiState.getBaseColumnSelection()
+            baseColumnSelection = uiState.getBaseColumnSelection(),
+            onAddDirectMessageChat = lambdas.onAddDirectMessageChat
         )
     }
 }

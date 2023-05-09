@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import model.DirectMessagesSelection
 import model.FeedSelection
 import model.RootColumnSelection
-import ui.theme.firstColumnTopPadding
+import ui.theme.rootColumnTopPadding
 import ui.views.main.root.atoms.MainIcon
 import ui.views.main.root.atoms.SectionDivider
 
@@ -24,7 +24,7 @@ fun StandardSection(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(Modifier.height(firstColumnTopPadding))
+        Spacer(Modifier.height(rootColumnTopPadding))
         MainIcon(
             onClick = onDirectMessagesClick,
             defaultImagePath = "icon_chat.svg",

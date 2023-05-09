@@ -59,6 +59,12 @@ class MainViewModel {
         }
     }
 
+    private val onAddDirectMessageChat: () -> Unit = {
+        viewModelState.update {
+            it.copy(directMessageChats = it.directMessageChats + it.directMessageChats[0])
+        }
+    }
+
     private val onProfileClick: () -> Unit = {
         // Open modal dialog
     }
@@ -69,7 +75,8 @@ class MainViewModel {
             onDirectMessagesClick = onDirectMessagesClick,
             onGroupClick = onGroupClick,
             onAddGroupClick = onAddGroupClick,
-            onProfileClick = onProfileClick
+            onProfileClick = onProfileClick,
+            onAddDirectMessageChat = onAddDirectMessageChat,
         )
     }
 }

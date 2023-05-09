@@ -6,4 +6,5 @@ data class MainViewModelLambdas(
     val onGroupClick: (Int) -> Unit,
     val onAddGroupClick: () -> Unit,
     val onProfileClick: () -> Unit,
+    val onAddDirectMessageChat: () -> Unit
 )
