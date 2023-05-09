@@ -8,13 +8,12 @@ import ui.views.main.base.molecules.GroupColumn
 
 @Composable
 fun BaseColumn(
-    firstColumnSelection: FirstColumnSelection,
-    selectedGroup: Group?,
-    directMessageChats: List<DirectMessageChat>
+    baseColumnSelection: BaseColumnSelection
 ) {
-    when (firstColumnSelection) {
-        is DirectMessagesSelection -> DirectMessagesColumn(directMessageChats = directMessageChats)
-        is FeedSelection -> FeedColumn()
-        is GroupSelection -> selectedGroup?.let { GroupColumn(group = it) }
+    when (baseColumnSelection) {
+        is DirectMessageChats -> DirectMessagesColumn(directMessageChats = baseColumnSelection.directMessageChats)
+        is FeedAndFilter -> FeedColumn()
+        is SelectedGroup -> GroupColumn(baseColumnSelection.selectedGroup)
+        is NothingInBaseColumn -> {}
     }
 }

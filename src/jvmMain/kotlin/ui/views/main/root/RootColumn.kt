@@ -9,9 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import model.FirstColumnSelection
 import model.Group
-import model.GroupSelection
+import model.GroupSelectionIndex
+import model.RootColumnSelection
 import ui.theme.firstColumnWidth
 import ui.views.main.root.molecules.GroupSection
 import ui.views.main.root.molecules.ProfileSection
@@ -19,7 +19,7 @@ import ui.views.main.root.molecules.StandardSection
 
 @Composable
 fun RootColumn(
-    firstColumnSelection: FirstColumnSelection,
+    rootColumnSelection: RootColumnSelection,
     onFeedClick: () -> Unit,
     onDirectMessagesClick: () -> Unit,
     groups: List<Group>,
@@ -34,14 +34,14 @@ fun RootColumn(
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         StandardSection(
-            selection = firstColumnSelection,
+            rootColumnSelection = rootColumnSelection,
             onFeedClick = onFeedClick,
             onDirectMessagesClick = onDirectMessagesClick
         )
         GroupSection(
             modifier = Modifier.weight(1f),
             groups = groups,
-            selectedIndex = if (firstColumnSelection is GroupSelection) firstColumnSelection.index else null,
+            selectedIndex = if (rootColumnSelection is GroupSelectionIndex) rootColumnSelection.index else null,
             onGroupClick = onGroupClick,
             onAddGroupClick = onAddGroupClick
         )

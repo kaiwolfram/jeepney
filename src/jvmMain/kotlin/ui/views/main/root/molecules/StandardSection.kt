@@ -8,14 +8,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import model.DirectMessagesSelection
 import model.FeedSelection
-import model.FirstColumnSelection
+import model.RootColumnSelection
 import ui.theme.firstColumnTopPadding
 import ui.views.main.root.atoms.MainIcon
 import ui.views.main.root.atoms.SectionDivider
 
 @Composable
 fun StandardSection(
-    selection: FirstColumnSelection,
+    rootColumnSelection: RootColumnSelection,
     onFeedClick: () -> Unit,
     onDirectMessagesClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -28,12 +28,12 @@ fun StandardSection(
         MainIcon(
             onClick = onDirectMessagesClick,
             defaultImagePath = "icon_chat.svg",
-            isSelected = selection == DirectMessagesSelection
+            isSelected = rootColumnSelection == DirectMessagesSelection
         )
         MainIcon(
             onClick = onFeedClick,
             defaultImagePath = "icon_feed.svg",
-            isSelected = selection == FeedSelection
+            isSelected = rootColumnSelection == FeedSelection
         )
         SectionDivider()
     }

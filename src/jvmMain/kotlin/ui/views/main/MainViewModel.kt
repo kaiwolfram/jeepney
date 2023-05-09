@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.update
 import model.DirectMessagesSelection
 import model.FeedSelection
 import model.Group
-import model.GroupSelection
+import model.GroupSelectionIndex
 import java.util.*
 
 class MainViewModel {
@@ -22,19 +22,23 @@ class MainViewModel {
         initialValue = viewModelState.value
     )
 
-    val onFeedClick: () -> Unit = {
+    private val onDirectMessagesClick: () -> Unit = {
         viewModelState.update {
-            it.copy(firstColumnSelection = FeedSelection)
+            it.copy(
+                rootColumnSelection = DirectMessagesSelection,
+            )
         }
     }
 
-    val onDirectMessagesClick: () -> Unit = {
+    private val onFeedClick: () -> Unit = {
         viewModelState.update {
-            it.copy(firstColumnSelection = DirectMessagesSelection)
+            it.copy(
+                rootColumnSelection = FeedSelection,
+            )
         }
     }
 
-    val onAddGroupClick: () -> Unit = {
+    private val onAddGroupClick: () -> Unit = {
         viewModelState.update {
             it.copy(
                 groups = it.groups + Group(
@@ -49,14 +53,14 @@ class MainViewModel {
         }
     }
 
-    val onProfileClick: () -> Unit = {
-        // Open modal dialog
+    private val onGroupClick: (Int) -> Unit = { clickedIndex ->
+        viewModelState.update {
+            it.copy(rootColumnSelection = GroupSelectionIndex(index = clickedIndex))
+        }
     }
 
-    val onGroupClick: (Int) -> Unit = { clickedIndex ->
-        viewModelState.update {
-            it.copy(firstColumnSelection = GroupSelection(index = clickedIndex))
-        }
+    private val onProfileClick: () -> Unit = {
+        // Open modal dialog
     }
 
     fun getLambdas(): MainViewModelLambdas {

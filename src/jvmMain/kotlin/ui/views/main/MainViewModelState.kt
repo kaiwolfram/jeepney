@@ -5,7 +5,7 @@ import model.*
 import java.util.*
 
 data class MainViewModelState(
-    val firstColumnSelection: FirstColumnSelection = DirectMessagesSelection,
+    val rootColumnSelection: RootColumnSelection = DirectMessagesSelection,
     val groups: List<Group> = listOf(
         Group(
             id = UUID.randomUUID().toString(),
@@ -55,10 +55,14 @@ data class MainViewModelState(
                 )
             )
         ),
-    )
+    ),
+    val feed: List<Message> = listOf()
 ) {
-    fun getSelectedGroupOrNull(): Group? {
-        return if (firstColumnSelection is GroupSelection) groups.getOrNull(firstColumnSelection.index)
-        else null
+    fun getBaseColumnSelection(): BaseColumnSelection {
+        return when (rootColumnSelection) {
+            is DirectMessagesSelection -> DirectMessageChats(directMessageChats = directMessageChats)
+            is FeedSelection -> FeedAndFilter(filterPlaceholder = 0, feed = feed)
+            is GroupSelectionIndex -> SelectedGroup(selectedGroup = groups[rootColumnSelection.index])
+        }
     }
 }

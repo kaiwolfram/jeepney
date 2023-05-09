@@ -14,7 +14,7 @@ fun MainScreen(
 ) {
     Row(Modifier.fillMaxSize()) {
         RootColumn(
-            firstColumnSelection = uiState.firstColumnSelection,
+            rootColumnSelection = uiState.rootColumnSelection,
             onFeedClick = lambdas.onFeedClick,
             onDirectMessagesClick = lambdas.onDirectMessagesClick,
             groups = uiState.groups,
@@ -23,6 +23,8 @@ fun MainScreen(
             profilePicture = uiState.profile.picture,
             onProfileClick = lambdas.onProfileClick,
         )
-        MainBase(uiState.firstColumnSelection, null, listOf())
+        MainBase(
+            baseColumnSelection = uiState.getBaseColumnSelection()
+        )
     }
 }
